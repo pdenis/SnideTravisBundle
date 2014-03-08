@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="snide_travis.travis_data_collector.class">Snide\Bundle\TravisBundle\DataCollector\TravisDataCollector</parameter>
+        <parameter key="snide_travis.client.class">Snide\Travis\Client</parameter>
+    </parameters>
+
+    <services>
+        <service id="snide_travis.travis_data_collector" class="%snide_travis.travis_data_collector.class%">
+            <argument type="service" id ="snide_travis.client"/>
+            <argument type="service" id ="snide_travis.repository"/>
+            <argument type="service" id="snide_travis.cache" />
+            <tag name="data_collector" template="SnideTravisBundle:Collector:travis.html.twig" id="snide_travis" />
+        </service>
+
+        <service id="snide_travis.client" class="%snide_travis.client.class%" />
+
+    </services>
+</container>
