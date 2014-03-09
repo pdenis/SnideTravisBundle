@@ -24,7 +24,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Snide\\Bundle\\ScrutinizerBundle": ""
+            "Snide\\Bundle\\TravisBundle": ""
         }
     },
     "target-dir": "Snide/Bundle/TravisBundle"
