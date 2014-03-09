@@ -3,8 +3,9 @@
 {% block toolbar %}
     {% if collector.data %}
         {% set icon %}
-        <span style="line-height:28px;"><img alt="Travis" src="data:image/png;base64,AAABAAEAFBQAAAEACAAIBgAAFgAAACgAAAAUAAAAKAAAAAEACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQRwcAkEcIAJFICQCRSQoAkksNAJNLDQCTTA4AlU8TAJZQFACWURUAl1IWAJhVGQCYVRoAmVYdAJxcJQCTkIgAlJCIAJSRiACUkYkAlZKJAJWSigCWk4sAlpOMAJeUjACXlI0AmZaOAJmWjwCbmJAAnZqTAJ6blACgnZYAoZ6XAKCfmgClopsAqKWfAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIyMcHBwcHBwcHBwcHBwjIyMjIyMjIxIUFBQUFBQUFBQUFBQSISMjIyMjFRIUFBQUFBQUFBQUFBMWIyMjIyMjGxIUFBQUFBQUFBQUFBIcIyMjIyMjIyMdHx8fHh8fHRIUFBUjIyMjIyMjIyMjIyMjIyMjFBIUESMjIyMjIyMjIyMjIyMjIyMVEhQQIiMjIyMjIyMjIyMjIyMjIxQUFBIjIyMjIyMXGBIUFBQUFBISEhQUGiMjIyMZFBIUFBQUFBQUFBQUFBIjIyMjIxUSFBQUFBQUFBQUFBQSFSMjIyMjDxERERERERERERISFRcjIyMjIyMgICAgHx8fHx8fHhgjIyMjIyMjIwkJCQojIyMjIyMjIyMjIyMjIyMjAQICAiMjIyMjIyMjIyMjIyMjIyMBAgIBBgwLCwsLDAgOIyMjIyMjIwUBAgICAgICAgICAgIBByMjIyMjDQMCAgICAgICAgICAgIAIyMjIyMjIwAAAgICAgICAgICAgIEIyMjIyMjIyMjIyMjIyMjIyMjIyMjI8AD8ADAAHAAwABwAOAAMAD8ADAA//wwAP/8EAD//DAA8AAwAMAAcADAAHAAwADwAMAD8ADD//AAw//wAMAB8ADAAHAAwABwAPAAMAD///AA"/></span>
-        <span class="sf-toolbar-status sf-toolbar-status-"></span>
+        <span style="line-height:28px;"><img alt="Travis" src="data:image/png;base64,R0lGODdhEAAQAMQAANM6HNM6HNc+INc+INdDJ9dDJ9dDJ9dDJ9lMNdlMNdlMNdlMNdpQOttZRdtZRdtZRd1gTfrp5/rp5/339gAAAADyAgAAAAAAAAoDAAAAAAAALwMAAAAAAABTAwAAAAAAACH5BAEAABQALAAAAAAQABAAAAVkICWMZFmKBMKsbIsQIxJNdG1HSDw1bdtMDB0j9SISGJOcALGrIZi0n1JGgwCR1glOACCqrsDniwsgIVdAEmDNJvzQDQJ7DoA+aQg6mxl3J8l0fCtSemtUNTiFZWJigAAUinoUIQA7"/></span>
+
+        <span class="sf-toolbar-status sf-toolbar-status-{% if collector.data.lastBuildState %}green{% else %}red{% endif %}"></span>
         {% endset %}
 
         {% include 'WebProfilerBundle:Profiler:toolbar_item.html.twig' with { 'link': profiler_url } %}
@@ -13,8 +14,8 @@
 
 {% block menu %}
     <span class="label">
-        <span class="icon"><img width="32" height="32" alt="scrutinizer" src="data:image/png;base64,R0lGODlhIAAgAMZEAAREjgdHjwdHkAhHkAlHkQlIkQpJkQ1Lkg1Lkw5Mkw9NlBJOlBJOlRNPlBNPlRRQlhVQlhVRlhZSlxhTlxhTmBlUmBlVmBpVmB1WmR5WmiBZmiFZmyVcnCpgnyphn4iQk4iQlIiRlImRlImSlYqSlIqSlYuTlYuTloyTloyUl42Ul42Vl42VmI6VmI6WmY+WmZCXmpCYm5GYm5GZnJKZnJOZnZKanZOanZObnpSbnpadoJeeoJeeoZieoZifopqfoJuipZyipZyjpZ+lqP///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////yH5BAEKAH8ALAAAAAAgACAAAAf+gH+Cg4SFhoeIgx0UAQMDBZCRkpOOG4gTAgIEk5ycAweIDY6dpJEDAhqHGAaPpaSnCogIra6eAg6IEKOQjpm+vwKnwR6JD7SOCRUXFszNFhcPGByJggu0BRnU2oQAjqPb4H8MEeQREuHo6eA/7O09PPDx8joqNtspHyH6+/z9IiIpTqSg9kJEiYMIEyo8+E/EiRqIaJwwuLBiwn8nErko8c+iR44uEsWY2PGjwn8yEuFIoYKjx4YUOb7YFmOFCBI4c5IwCIPFRRPqEp0MimgiQxBDiBoyWmKECCFKC7k8GGKbjhxB5snLMZVjRkQ+VDQMAbNsSYYzD8XoavJiiRsph1icbYvwXwu1TOkidIoCUUG9J08AQWTCrGHDcBPNuMG4sePHjXckCgQAOw=="/></span>
-        <strong>Scrutinizer</strong>
+        <span class="icon"><img width="32" height="32" alt="travis" src="data:image/png;base64,R0lGODdhEAAQAMQAANM6HNM6HNc+INc+INdDJ9dDJ9dDJ9dDJ9lMNdlMNdlMNdlMNdpQOttZRdtZRdtZRd1gTfrp5/rp5/339gAAAADyAgAAAAAAAAoDAAAAAAAALwMAAAAAAABTAwAAAAAAACH5BAEAABQALAAAAAAQABAAAAVkICWMZFmKBMKsbIsQIxJNdG1HSDw1bdtMDB0j9SISGJOcALGrIZi0n1JGgwCR1glOACCqrsDniwsgIVdAEmDNJvzQDQJ7DoA+aQg6mxl3J8l0fCtSemtUNTiFZWJigAAUinoUIQA7"/></span>
+        <strong>Travis</strong>
     </span>
 {% endblock %}
 
@@ -27,7 +28,38 @@
         </div>
     {% else %}
 
-        hello
+        {% if collector.data.builds is empty %}
+            <p>No builds found...</p>
+        {% else %}
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Date</th>
+                    <th>Message</th>
+                    <th>Commit</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for build in collector.data.builds|slice(0, 20) %}
+                    <tr>
+                        <td>{{ build.number }}</td>
+                        <td>{{ build.finishedAt.format('l, d M Y H:i:s') }}</td>
+                        <td>{{ build.message }}</td>
+                        <td><a target="_blank" href="https://github.com/{{ collector.data.slug }}/commit/{{ build.commit }}">{{ build.commit }}</a></td>
+                        <td>
+                            {% if build.result == 0%}
+                                <img width="30" src="{{ asset('/bundles/snidetravis/images/green.png') }}" />
+                            {% else %}
+                                <img  width="30"  src="{{ asset('/bundles/snidetravis/images/red.png') }}" />
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
     {% endif %}
 
 
