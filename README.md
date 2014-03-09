@@ -3,6 +3,9 @@ SnideTravisBundle
 
 A quick overview of travis CI builds of your repository (Symfony 2 Bundle)
 
+[![Build Status](https://travis-ci.org/pdenis/SnideTravisBundle.png)](https://travis-ci.org/pdenis/SnideTravisBundle)
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/pdenis/SnideTravisBundle/badges/quality-score.png?s=f710c1255d1bd67ad1579f47dec413e0174c359e)](https://scrutinizer-ci.com/g/pdenis/SnideTravisBundle/)
+
 # Setup
 -----
 
