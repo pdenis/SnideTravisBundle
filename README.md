@@ -1,7 +1,7 @@
 SnideTravisBundle
 ======================
 
-A quick overview of travis CI statut of your repository (Symfony 2 Bundle)
+A quick overview of travis CI builds of your repository (Symfony 2 Bundle)
 
 # Setup
 -----
@@ -13,12 +13,11 @@ If you use composer, add SnideTravisBundle bundle as a dependency to the compose
 ```php
     "require": {
         ...
-        "snide/scrutitravisnizer-bundle": "dev-master"
+        "snide/travis-bundle": "dev-master"
         ...
     },
 
 ## Loading
-
 
 Add the bundle to your app/AppKernel.php under the dev environment
 ```php
@@ -27,19 +26,25 @@ if (in_array($this->getEnvironment(), array('dev', 'test'))) {
     $bundles[] = new Snide\Bundle\TravisBundle\SnideTravisBundle();
 }
 ```
+The bundle needs to copy the resources necessary to the web folder. You can use the command below:
+
+```bash
+    php app/console assets:install
+```
 
 ## Configuration
 
-Add the following to your `app/config/config_dev.yml` (you only want to use this in the dev environment)
+Add SnideTravisBundle following to your `app/config/config_dev.yml` (you only want to use this in the dev environment)
 
 ```yml
 snide_travis:
     repository:
-            slug: pdenis/SnideTravinizerBundle # your repository slug
+        slug: pdenis/SnideTravinizerBundle # your repository slug
     # Optional
-    filesystem_cache_path: "%kernel.cache_dir%/scrutinizer"
+    filesystem_cache_path: "%kernel.cache_dir%/travis"
 
 ```
 
 ## Overview
-TODO
+
+<img src="https://raw.github.com/pdenis/SnideTravisBundle/master/docs/screenshots/general.png" alt="Travis builds">
